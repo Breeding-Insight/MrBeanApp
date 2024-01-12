@@ -39,15 +39,17 @@ mod_home_module1_ui <- function(id) {
           href = "https://cran.r-project.org/web/packages/SpATS/SpATS.pdf",
           icon = shiny::icon("braille")
         ),
-        bs4Dash::valueBox(
-          value = "ASReml-R",
-          subtitle = "AR1xAR1 Correlation",
-          width = 12,
-          color = "danger",
-          elevation = 3,
-          href = "https://asreml.kb.vsni.co.uk/wp-content/uploads/sites/3/2018/02/ASReml-R-Reference-Manual-4.pdf",
-          icon = shiny::icon("braille")
-        ),
+
+        #removed ASReml from Home page
+#         bs4Dash::valueBox(
+#           value = "ASReml-R",
+#           subtitle = "AR1xAR1 Correlation",
+#           width = 12,
+#           color = "danger",
+#           elevation = 3,
+#           href = "https://asreml.kb.vsni.co.uk/wp-content/uploads/sites/3/2018/02/ASReml-R-Reference-Manual-4.pdf",
+#           icon = shiny::icon("braille")
+#         ),
         bs4Dash::valueBox(
           value = "Lme4",
           subtitle = "lmer",
@@ -66,33 +68,34 @@ mod_home_module1_ui <- function(id) {
           elevation = 3,
           href = "https://www.frontiersin.org/articles/10.3389/fpls.2018.01511/full"
         ),
-        bs4Card(
-          title = "Jump",
-          status = "danger",
-          width = 12,
-          solidHeader = TRUE,
-          actionLink(
-            inputId = ns("toAwesome1"),
-            label = "Data",
-            icon = icon("database"),
-            style = "color: #d9534f"
-          ),
-          br(),
-          actionLink(
-            inputId = ns("toAwesome2"),
-            label = "Spatial",
-            icon = icon("braille"),
-            style = "color: #d9534f"
-          ),
-          br(),
-          actionLink(
-            inputId = ns("toAwesome3"),
-            label = "Lme4",
-            icon = icon("chart-column", verify_fa = FALSE),
-            style = "color: #d9534f"
-          ),
-          br()
-        )
+        #remove Jump Card
+#         bs4Card(
+#           title = "Jump",
+#           status = "danger",
+#           width = 12,
+#           solidHeader = TRUE,
+#           actionLink(
+#             inputId = ns("toAwesome1"),
+#             label = "Data",
+#             icon = icon("database"),
+#             style = "color: #d9534f"
+#           ),
+#           br(),
+#           actionLink(
+#             inputId = ns("toAwesome2"),
+#             label = "Spatial",
+#             icon = icon("braille"),
+#             style = "color: #d9534f"
+#           ),
+#           br(),
+#           actionLink(
+#             inputId = ns("toAwesome3"),
+#             label = "Lme4",
+#             icon = icon("chart-column", verify_fa = FALSE),
+#             style = "color: #d9534f"
+#           ),
+#           br()
+#         )
       )
     )
   )

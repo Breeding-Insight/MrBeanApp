@@ -125,71 +125,73 @@ app_ui <- function(request) {
               icon = shiny::icon("circle", verify_fa = FALSE)
             )
           ),
-          bs4SidebarHeader("ASReml"),
-          # Single spatial analysis ASReml
-          bs4SidebarMenuItem(
-            text = "Single-Site",
-            icon = shiny::icon("braille"),
-            startExpanded = F,
-            bs4SidebarMenuSubItem(
-              text = "Model Specs",
-              tabName = "spats_asreml",
-              icon = shiny::icon("circle", verify_fa = FALSE)
-            ),
-            bs4SidebarMenuSubItem(
-              text = "BLUPs/BLUEs",
-              tabName = "spats_asreml_effects",
-              icon = shiny::icon("circle", verify_fa = FALSE)
-            )
-          ),
-          # Un-replicated analysis
-          bs4SidebarMenuItem(
-            "Unreplicated",
-            icon = shiny::icon("crosshairs"),
-            startExpanded = F,
-            bs4SidebarMenuSubItem(
-              text = "Model Specs",
-              tabName = "aug_model",
-              icon = shiny::icon("circle", verify_fa = FALSE)
-            ),
-            bs4SidebarMenuSubItem(
-              text = "BLUPs/BLUEs",
-              tabName = "aug_result",
-              icon = shiny::icon("circle", verify_fa = FALSE)
-            )
-          ),
-          # Model selector
-          bs4SidebarMenuItem(
-            text = "Model Selector",
-            icon = shiny::icon("hand-pointer"),
-            startExpanded = F,
-            bs4SidebarMenuSubItem(
-              HTML(
-                paste(
-                  "Model Specs",
-                  bs4Badge("new",
-                    position = "right",
-                    color = "success"
-                  )
-                )
-              ),
-              tabName = "asreml_selector",
-              icon = shiny::icon("circle", verify_fa = FALSE)
-            ),
-            bs4SidebarMenuSubItem(
-              HTML(
-                paste(
-                  "BLUPs/BLUEs",
-                  bs4Badge("new",
-                    position = "right",
-                    color = "success"
-                  )
-                )
-              ),
-              tabName = "asr_sel_selected",
-              icon = shiny::icon("circle", verify_fa = FALSE)
-            )
-          ),
+
+          ##Removed ASReml from Side bar
+#           bs4SidebarHeader("ASReml"),
+#           # Single spatial analysis ASReml
+#           bs4SidebarMenuItem(
+#             text = "Single-Site",
+#             icon = shiny::icon("braille"),
+#             startExpanded = F,
+#             bs4SidebarMenuSubItem(
+#               text = "Model Specs",
+#               tabName = "spats_asreml",
+#               icon = shiny::icon("circle", verify_fa = FALSE)
+#             ),
+#             bs4SidebarMenuSubItem(
+#               text = "BLUPs/BLUEs",
+#               tabName = "spats_asreml_effects",
+#               icon = shiny::icon("circle", verify_fa = FALSE)
+#             )
+#           ),
+#           # Un-replicated analysis
+#           bs4SidebarMenuItem(
+#             "Unreplicated",
+#             icon = shiny::icon("crosshairs"),
+#             startExpanded = F,
+#             bs4SidebarMenuSubItem(
+#               text = "Model Specs",
+#               tabName = "aug_model",
+#               icon = shiny::icon("circle", verify_fa = FALSE)
+#             ),
+#             bs4SidebarMenuSubItem(
+#               text = "BLUPs/BLUEs",
+#               tabName = "aug_result",
+#               icon = shiny::icon("circle", verify_fa = FALSE)
+#             )
+#           ),
+#           # Model selector
+#           bs4SidebarMenuItem(
+#             text = "Model Selector",
+#             icon = shiny::icon("hand-pointer"),
+#             startExpanded = F,
+#             bs4SidebarMenuSubItem(
+#               HTML(
+#                 paste(
+#                   "Model Specs",
+#                   bs4Badge("new",
+#                     position = "right",
+#                     color = "success"
+#                   )
+#                 )
+#               ),
+#               tabName = "asreml_selector",
+#               icon = shiny::icon("circle", verify_fa = FALSE)
+#             ),
+#             bs4SidebarMenuSubItem(
+#               HTML(
+#                 paste(
+#                   "BLUPs/BLUEs",
+#                   bs4Badge("new",
+#                     position = "right",
+#                     color = "success"
+#                   )
+#                 )
+#               ),
+#               tabName = "asr_sel_selected",
+#               icon = shiny::icon("circle", verify_fa = FALSE)
+#             )
+#           ),
           bs4SidebarHeader("Two-Stage Analysis"),
           # Two-Stage MET
           bs4SidebarMenuItem(
