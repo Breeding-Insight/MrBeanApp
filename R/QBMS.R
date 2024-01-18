@@ -10,40 +10,44 @@
 #'
 #' @return a list
 #' @noRd
-qbmsbrapi <- function(url = "https://bms.ciat.cgiar.org/ibpworkbench/controller/auth/login",
-                      engine = c("bms", "breedbase"),
-                      path = ifelse(engine == "bms", "bmsapi", ""),
-                      time_out = ifelse(engine == "bms", 120, 300),
+qbmsbrapi <- function(url = "https://sandbox.breedinginsight.net",
+                      engine = '',
+                      path = 'v1/programs/025a8e6e-15fc-4488-8d26-41eb16107a95',
+                      time_out = 300,
                       no_auth = FALSE,
+                      brapi_ver = 'v2',
                       username = NULL,
                       password = NULL) {
   if (is.null(url) | url == "") {
     return()
   }
-
+  print('qbmsbrapi')
   bmsbase <- QBMS::set_qbms_config(
     url = url,
     path = path,
-    time_out = time_out, 
-    no_auth = no_auth,
-    engine = engine,
-    page_size = 5000
+    brapi_ver = 'v2',
+    engine = engine
   )
 
-  if (!no_auth) {
-    if (is.null(username) | username == "") {
-      return()
-    }
-    if (is.null(password) | password == "") {
-      return()
-    }
-    bmslogin <- QBMS::login_bms(username = username, password = password)
-  } else {
-    bmslogin <- NULL
+  if (is.null(password) | password == "") {
+    return()
   }
+
+  print(url)
+  print(path)
+  print(engine)
+  print(brapi_ver)
+  print(password)
+
+
+  QBMS::set_token(password)
+  print('token set')
+
   crops <- QBMS::list_crops()
-  return(list(bmsbase = bmsbase, bmslogin = bmslogin, crops = crops))
+  print('list_crops')
+  return(list(bmsbase = bmsbase,  crops = crops))
 }
+
 
 #' Get Programs
 #'
@@ -52,10 +56,6 @@ qbmsbrapi <- function(url = "https://bms.ciat.cgiar.org/ibpworkbench/controller/
 #' @return a list with programs
 #' @noRd
 qbmsprograms <- function(crop = NULL) {
-  if (is.null(crop)) {
-    return()
-  }
-  QBMS::set_crop(crop)
   programs <- QBMS::list_programs()
   return(programs)
 }
