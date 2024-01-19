@@ -8,6 +8,12 @@
 #'
 #' @importFrom shiny NS tagList
 mod_home_module1_ui <- function(id) {
+
+  # Read configuration
+  app_directory <- system.file("", package = "MrBean")
+  config_path <- file.path(app_directory, "", "config.yml")
+  config <- yaml::read_yaml(config_path)
+
   ns <- NS(id)
   tagList(
     fluidRow(
@@ -39,17 +45,17 @@ mod_home_module1_ui <- function(id) {
           href = "https://cran.r-project.org/web/packages/SpATS/SpATS.pdf",
           icon = shiny::icon("braille")
         ),
-
-        #removed ASReml from Home page
-#         bs4Dash::valueBox(
-#           value = "ASReml-R",
-#           subtitle = "AR1xAR1 Correlation",
-#           width = 12,
-#           color = "danger",
-#           elevation = 3,
-#           href = "https://asreml.kb.vsni.co.uk/wp-content/uploads/sites/3/2018/02/ASReml-R-Reference-Manual-4.pdf",
-#           icon = shiny::icon("braille")
-#         ),
+        if (config$enable_asreml_features) {
+          bs4Dash::valueBox(
+            value = "ASReml-R",
+            subtitle = "AR1xAR1 Correlation",
+            width = 12,
+            color = "danger",
+            elevation = 3,
+            href = "https://asreml.kb.vsni.co.uk/wp-content/uploads/sites/3/2018/02/ASReml-R-Reference-Manual-4.pdf",
+            icon = shiny::icon("braille")
+          )
+        },
         bs4Dash::valueBox(
           value = "Lme4",
           subtitle = "lmer",
