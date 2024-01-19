@@ -10,9 +10,9 @@
 #'
 #' @return a list
 #' @noRd
-qbmsbrapi <- function(url = "https://sandbox.breedinginsight.net",
+qbmsbrapi <- function(url = "https://sandbox.breedinginsight.net/v1/programs/025a8e6e-15fc-4488-8d26-41eb16107a95",
                       engine = '',
-                      path = 'v1/programs/025a8e6e-15fc-4488-8d26-41eb16107a95',
+                      path = '',
                       time_out = 300,
                       no_auth = FALSE,
                       brapi_ver = 'v2',
@@ -21,7 +21,6 @@ qbmsbrapi <- function(url = "https://sandbox.breedinginsight.net",
   if (is.null(url) | url == "") {
     return()
   }
-  print('qbmsbrapi')
   bmsbase <- QBMS::set_qbms_config(
     url = url,
     path = path,
@@ -32,19 +31,9 @@ qbmsbrapi <- function(url = "https://sandbox.breedinginsight.net",
   if (is.null(password) | password == "") {
     return()
   }
-
-  print(url)
-  print(path)
-  print(engine)
-  print(brapi_ver)
-  print(password)
-
-
   QBMS::set_token(password)
-  print('token set')
 
   crops <- QBMS::list_crops()
-  print('list_crops')
   return(list(bmsbase = bmsbase,  crops = crops))
 }
 

@@ -402,14 +402,12 @@ mod_import_dt_server <- function(input, output, session) {
 
   observe({
     if (is.null(bmscon())) {
-      print('shinyalert1')
       shinyalert::shinyalert(
         title = "Incorrect username or password",
         type = "error",
         confirmButtonCol = "#28a745"
       )
     } else {
-      print('shinyalert2')
       shinyalert::shinyalert(
         title = paste0("Welcome to DeltaBreed!"),
         type = "success",
@@ -418,14 +416,12 @@ mod_import_dt_server <- function(input, output, session) {
         imageUrl = "www/brapi.png",
         animation = "slide-from-top"
       )
-      print('shinyalert3')
       updateSelectInput(
         session,
         inputId = "Id008",
         choices = bmscon()$crops,
         selected = "NNNNN"
       )
-      print('selected_input')
     }
   }) %>%
     bindEvent(input$mysql)
@@ -452,7 +448,6 @@ mod_import_dt_server <- function(input, output, session) {
   })
 
   observe({
-    print('observe_programs')
     if (is.null(programs())) {
       return()
     } else {
@@ -490,7 +485,6 @@ mod_import_dt_server <- function(input, output, session) {
   })
 
   observe({
-    print('observe_trials')
     if (is.null(trials())) {
       options <- ""
     } else {
@@ -529,7 +523,6 @@ mod_import_dt_server <- function(input, output, session) {
   })
 
   observe({
-    print('observe_studies')
     if (is.null(studies())) {
       options <- ""
     } else {

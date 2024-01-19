@@ -7,10 +7,8 @@
 app_ui <- function(request) {
 
   # Read configuration
-
-  # config_path <- system.file("C:/Users/tjs334/OneDrive - Cornell University/Documents/GitHub/MrBeanApp/inst", "config.yml", package = "MrBeanApp")
-  app_directory <- "C:/Users/tjs334/OneDrive - Cornell University/Documents/GitHub/MrBeanApp"
-  config_path <- file.path(app_directory, "inst", "config.yml")
+  app_directory <- system.file("", package = "MrBean")
+  config_path <- file.path(app_directory, "", "config.yml")
   config <- yaml::read_yaml(config_path)
 
   tagList(
