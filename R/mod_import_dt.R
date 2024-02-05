@@ -20,7 +20,7 @@ mod_import_dt_ui <- function(id) {
         width = 3,
         radioGroupButtons(
           inputId = ns("Id004"),
-          choices = c( "DeltaBreed" = 3,"Example Data" = 1),
+          choices = c( "BrAPI" = 3,"Example Data" = 1),
           status = "success",
           selected = 3
         ),
@@ -184,7 +184,7 @@ mod_import_dt_ui <- function(id) {
               solidHeader = FALSE,
               width = 12,
               status = "success",
-              h3("How to connect DeltaBreed to MrBean?"),
+              h3("How to connect BrAPI server to MrBean?"),
               hr(),
               suppressWarnings(
                 includeHTML(
@@ -198,7 +198,7 @@ mod_import_dt_ui <- function(id) {
           width = 4,
           fluidRow(
             bs4Dash::box(
-              title = tagList(shiny::icon("users"), "DeltaBreed"),
+              title = tagList(shiny::icon("users"), "Server"),
               solidHeader = FALSE,
               width = 12,
               status = "success",
@@ -216,7 +216,7 @@ mod_import_dt_ui <- function(id) {
                     placement = "top"
                   )
                 ),
-                value = "https://sandbox.breedinginsight.net/v1/programs/025a8e6e-15fc-4488-8d26-41eb16107a95",
+                value = "https://qa-test.breedinginsight.net/v1/programs/8397cfd7-7d28-4441-964d-4d5567f67e9e",
                 width = "100%"
               ),
               passwordInput(
@@ -427,7 +427,6 @@ mod_import_dt_server <- function(input, output, session) {
     bindEvent(input$mysql)
 
   programs <- reactive({
-    crop <- input$Id008
     tryCatch(
     {
       list_programs <- qbmsprograms()

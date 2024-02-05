@@ -10,7 +10,7 @@
 #'
 #' @return a list
 #' @noRd
-qbmsbrapi <- function(url = "https://sandbox.breedinginsight.net/v1/programs/025a8e6e-15fc-4488-8d26-41eb16107a95",
+qbmsbrapi <- function(url = "https://qa-test.breedinginsight.net/v1/programs/8397cfd7-7d28-4441-964d-4d5567f67e9e",
                       engine = '',
                       path = '',
                       time_out = 300,
@@ -114,7 +114,7 @@ dataqbms <- function(studies = NULL, dt_studies = NULL) {
     ) %>% 
       as.data.frame()
   } else {
-    names(mult_dt) <- dt_studies$trial
+    names(mult_dt) <- dplyr::filter(dt_studies, trimws(studyName) %in% trimws(studies))$trial
     mult_dt <- data.table::rbindlist(
       l = mult_dt,
       fill = TRUE,
