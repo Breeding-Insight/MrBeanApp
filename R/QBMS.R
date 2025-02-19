@@ -24,6 +24,7 @@ qbmsbrapi <- function(url = "https://qa-test.breedinginsight.net/v1/programs/839
   bmsbase <- QBMS::set_qbms_config(
     url = url,
     path = path,
+    page_size = 100000,
     brapi_ver = 'v2',
     engine = engine
   )
