@@ -23,7 +23,7 @@ data_react <- function(file = NULL,
   Ext <- tools::file_ext(inFile$datapath)
 
   if (choice == 1) {
-    dt <- Dar16C_hiP
+    dt <- read.csv(system.file("Dar16C_hiP.csv", package = "MrBean"))
   } else if (choice == 2) {
     if (is.null(inFile)) {
       dt <- data.frame()
