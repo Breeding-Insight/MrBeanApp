@@ -601,7 +601,7 @@ mod_import_dt_server <- function(input, output, session) {
       w$show()
       tryCatch(
         {
-          datos <- dataqbms(studies = input$study, dt_studies = studies())
+          datos <- dataqbms(studies = input$study, dt_studies = studies(), engine = input$engine)
         },
         error = function(e) {
           shinytoastr::toastr_error(

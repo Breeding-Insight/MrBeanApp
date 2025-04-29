@@ -17,7 +17,8 @@ qbmsbrapi <- function(url = "https://bms.ciat.cgiar.org/ibpworkbench/controller/
                       no_auth = FALSE,
                       username = NULL,
                       password = NULL, 
-                      brapi_ver = 'v2') {
+                      brapi_ver = 'v2',
+                      page_size = 5000) {
   if (is.null(url) | url == "") {
     return()
   }
@@ -28,7 +29,7 @@ qbmsbrapi <- function(url = "https://bms.ciat.cgiar.org/ibpworkbench/controller/
     time_out = time_out, # deleted in the mod version
     no_auth = no_auth,   # deleted in the mod version
     engine = ifelse(engine == "deltabreed", "", engine),
-    page_size = 5000,
+    page_size = page_size,
     brapi_ver = brapi_ver
   )
 
@@ -109,10 +110,11 @@ qbmsstudies <- function(trial = NULL) {
 #'
 #' @param studies string studies
 #' @param dt_studies data.frame studies
+#' @param engine define engine (e.g. deltabreed, breedbase)
 #'
 #' @return data.frame
 #' @noRd
-dataqbms <- function(studies = NULL, dt_studies = NULL) {
+dataqbms <- function(studies = NULL, dt_studies = NULL, engine = NULL) {
   if (is.null(studies)) {
     return()
   }
