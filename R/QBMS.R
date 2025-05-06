@@ -11,14 +11,14 @@
 #' @return a list
 #' @noRd
 qbmsbrapi <- function(url = "https://bms.ciat.cgiar.org/ibpworkbench/controller/auth/login",
-                      engine = c("bms", "breedbase","deltabreed"), # This was "" in the BI mod version for deltabreed
+                      engine = c("bms", "breedbase","deltabreed"), 
                       path = ifelse(engine == "bms", "bmsapi", ""),
                       time_out = ifelse(engine == "bms", 120, 300),
                       no_auth = FALSE,
                       username = NULL,
                       password = NULL, 
                       brapi_ver = 'v2',
-                      page_size = 5000) {
+                      page_size = 65000) {
   if (is.null(url) | url == "") {
     return()
   }
@@ -28,7 +28,7 @@ qbmsbrapi <- function(url = "https://bms.ciat.cgiar.org/ibpworkbench/controller/
     path = path,
     time_out = time_out, # deleted in the mod version
     no_auth = no_auth,   # deleted in the mod version
-    engine = ifelse(engine == "deltabreed", "", engine),
+    engine = engine,
     page_size = page_size,
     brapi_ver = brapi_ver
   )
@@ -110,11 +110,10 @@ qbmsstudies <- function(trial = NULL) {
 #'
 #' @param studies string studies
 #' @param dt_studies data.frame studies
-#' @param engine define engine (e.g. deltabreed, breedbase)
 #'
 #' @return data.frame
 #' @noRd
-dataqbms <- function(studies = NULL, dt_studies = NULL, engine = NULL) {
+dataqbms <- function(studies = NULL, dt_studies = NULL) {
   if (is.null(studies)) {
     return()
   }
