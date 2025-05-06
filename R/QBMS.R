@@ -7,6 +7,8 @@
 #' @param no_auth go to QBMS documentation
 #' @param username username
 #' @param password password
+#' @param brapi_ver specify the brapi version (v1 or v2)
+#' @param page_size expected number of records per page
 #'
 #' @return a list
 #' @noRd
@@ -18,7 +20,7 @@ qbmsbrapi <- function(url = "https://bms.ciat.cgiar.org/ibpworkbench/controller/
                       username = NULL,
                       password = NULL, 
                       brapi_ver = 'v2',
-                      page_size = 65000) {
+                      page_size = ifelse(engine == "deltabreed", 65000, 5000)) {
   if (is.null(url) | url == "") {
     return()
   }
