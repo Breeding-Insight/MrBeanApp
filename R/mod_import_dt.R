@@ -218,11 +218,12 @@ mod_import_dt_ui <- function(id) {
                      https://cassavabase.org
                      https://sweetpotatobase.org
                      https://bms.ciat.cgiar.org/
-                     https://qa-test.breedinginsight.net",
+                     https://qa-test.breedinginsight.net/[programID]",
                     placement = "top"
                   )
                 ),
-                value = "https://<server>/<path>",
+                placeholder = "https://<server>/<path>",
+                value = "",
                 width = "100%"
               ),
               awesomeCheckbox(
