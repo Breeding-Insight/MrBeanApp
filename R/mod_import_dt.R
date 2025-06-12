@@ -471,11 +471,7 @@ mod_import_dt_server <- function(input, output, session) {
         type = "success",
         text = "",
         confirmButtonCol = "#28a745",
-        imageUrl = ifelse(
-          input$engine == "bms",
-          "www/0.png",
-          "www/brapi.png"
-        ),
+        imageUrl = if(input$engine == "bms") "www/0.png" else if(input$engine == "deltabreed") "www/deltabreed.png" else "www/brapi.png",
         animation = "slide-from-top"
       )
       updateSelectInput(
